@@ -29,4 +29,8 @@ sleep 2
 # A project whose files are gone and that has no containers drops out.
 mv "$DOCKER_STACKS_DIR/citest" "$TMP/elsewhere"
 "$BIN" list | grep -q '^dsci' && { echo "FAIL: a vanished project is still listed"; exit 1; }
+# Piped into a reader that stops early: no panic.
+if "$BIN" themes 2>&1 | head -1 >/dev/null && "$BIN" themes 2>"$TMP/err" | head -1 >/dev/null; [ -s "$TMP/err" ]; then
+  echo "FAIL: a closed pipe is reported"; cat "$TMP/err"; exit 1
+fi
 echo "docker-stacks docker tests: PASS"

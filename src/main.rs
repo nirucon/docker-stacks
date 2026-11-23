@@ -128,6 +128,12 @@ fn compose_cli(cfg: &Config, verb: &str, name: &str) -> Result<(), String> {
 }
 
 fn main() -> ExitCode {
+    // Output piped into head or grep -q ends quietly when the reader stops,
+    // as for any Unix tool, not with a panic about a broken pipe.
+    // SAFETY: setting a signal disposition before any thread starts.
+    unsafe {
+        libc::signal(libc::SIGPIPE, libc::SIG_DFL);
+    }
     let args: Vec<String> = std::env::args().skip(1).collect();
     let cfg = Config::load();
     let result = match args.first().map(String::as_str) {
