@@ -2,7 +2,7 @@
 name = "docker-stacks"
 version = "1.0.0"
 edition = "2021"
-rust-version = "1.85"
+rust-version = "1.88"
 description = "A fast terminal manager for Docker Compose stacks, containers, images, volumes and networks, in the NIRUX style"
 license = "MIT"
 repository = "https://github.com/nirucon/docker-stacks"
