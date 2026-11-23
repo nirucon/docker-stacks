@@ -1,0 +1,7 @@
+# Winter Nights: dark slate with the warm light of the horizon.
+name = "Niru Winter Nights"
+background = "1f232b"
+foreground = "ead9c3"
+muted = "b9aa9a"
+border = "4e5157"
+focus = "d8c4aa"

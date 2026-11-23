@@ -1,0 +1,22 @@
+# ~/.config/docker-stacks/config.toml (every key is optional)
+
+# Folders whose subfolders hold compose projects. Projects Docker already
+# knows (running or stopped) are found anyway, wherever they live.
+roots = ["~/Docker"]
+
+# nirux (the desktop's NIRU theme), amber, phosphor, c64, paper or native.
+# t in the program changes it and saves it here.
+theme = "nirux"
+
+# The host in links to published ports. Empty: localhost, or this machine's
+# name when you are logged in over SSH.
+url_host = ""
+
+# Where B and uninstall put database dumps.
+backups = "~/.local/share/docker-stacks/backups"
+
+# Seconds between quiet refreshes. Docker's events refresh the view at once.
+refresh = 10
+
+# Show containers started without Compose as a row in the stack list.
+show_loose = true

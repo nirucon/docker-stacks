@@ -1,0 +1,7 @@
+# The Norns: charcoal, weathered stone and a pale grey thread.
+name = "Niru The Norns"
+background = "111110"
+foreground = "ece9e4"
+muted = "a6a19b"
+border = "3b3936"
+focus = "c9c2b9"

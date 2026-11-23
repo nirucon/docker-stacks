@@ -1,0 +1,7 @@
+# Blue Horizon: a quiet deep-blue horizon above a dark sea.
+name = "Niru Blue Horizon"
+background = "0b1821"
+foreground = "dce6eb"
+muted = "93a6b2"
+border = "243846"
+focus = "86aec8"

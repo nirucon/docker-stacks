@@ -1,0 +1,7 @@
+# Nord: cool arctic blues on a dark slate ground.
+name = "Niru Nord"
+background = "2e3440"
+foreground = "eceff4"
+muted = "9aa5b1"
+border = "3b4252"
+focus = "88c0d0"

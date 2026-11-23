@@ -1,0 +1,7 @@
+# Forest Vigil: a soft, dark moss green for long evenings.
+name = "Niru Forest Vigil"
+background = "0b100c"
+foreground = "d8ded2"
+muted = "96a292"
+border = "2b362c"
+focus = "8aa87e"

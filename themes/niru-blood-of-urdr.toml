@@ -1,0 +1,7 @@
+# Blood of Urdr: warm, dark iron and a blood-red accent.
+name = "Niru Blood of Urdr"
+background = "120808"
+foreground = "e8d6cf"
+muted = "b09a92"
+border = "3a1d1b"
+focus = "c96050"

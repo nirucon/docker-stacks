@@ -1,0 +1,7 @@
+# Satie: muted, sparse, a little melancholic. Warm grey with a dusty rose accent.
+name = "Niru Satie"
+background = "141414"
+foreground = "dedad4"
+muted = "8f8b86"
+border = "2a2724"
+focus = "b08d7d"

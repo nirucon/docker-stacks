@@ -1,0 +1,38 @@
+name: Release
+on:
+  push: { tags: ['v*'] }
+permissions: { contents: write }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with: { components: "rustfmt, clippy", targets: x86_64-unknown-linux-musl }
+      - run: sudo apt-get update && sudo apt-get install -y musl-tools
+      - run: cargo fmt --check
+      - run: cargo clippy --locked --all-targets -- -D warnings
+      - run: cargo test --locked
+      # A static binary: runs on Debian, Arch, Void and on servers.
+      - run: cargo build --release --locked --target x86_64-unknown-linux-musl
+      - name: Identity
+        run: test "$(./target/x86_64-unknown-linux-musl/release/docker-stacks --version | awk '{print $2}')" = "${GITHUB_REF_NAME#v}"
+      - name: Package
+        run: |
+          mkdir -p dist
+          cp target/x86_64-unknown-linux-musl/release/docker-stacks install.sh uninstall.sh config.example.toml dist/
+          printf '%s\n' "${GITHUB_REF_NAME#v}" > dist/VERSION
+          (cd dist && tar -czf "docker-stacks-${GITHUB_REF_NAME#v}-x86_64-linux-musl.tar.gz" docker-stacks VERSION install.sh uninstall.sh config.example.toml)
+          (cd dist && sha256sum docker-stacks *.tar.gz install.sh uninstall.sh config.example.toml VERSION > SHA256SUMS)
+      - uses: softprops/action-gh-release@v2
+        with:
+          make_latest: true
+          files: |
+            dist/docker-stacks
+            dist/docker-stacks-*-x86_64-linux-musl.tar.gz
+            dist/install.sh
+            dist/uninstall.sh
+            dist/config.example.toml
+            dist/VERSION
+            dist/SHA256SUMS
+          generate_release_notes: true
